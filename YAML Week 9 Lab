@@ -15,8 +15,8 @@
 - name: Serena Williams
   sport: Tennis
   team:
-    name: null
-    city: null
+    name: 
+    city: 
   position: Player
   age: 41
 - name: Tom Brady
@@ -26,3 +26,4 @@
     city: Tampa Bay
   position: Quarterback
   age: 46
+
