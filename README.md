@@ -25,4 +25,7 @@ Shortcuts I frequently use:
 Shortcuts I would like to start using: 
 - Ctrl-A (select all)
 - Win-D (show desktop)
+
 [CLI commands](cli.md)
+
+This is done as part of lab6
