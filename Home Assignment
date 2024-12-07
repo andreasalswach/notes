@@ -1,0 +1,75 @@
+-- Andrea Salswach Lopez
+-- 101580260
+
+-- Q1: List all the rectangles
+-- A: Lists all rectangles in the table with their respective details
+SELECT * FROM rectangles;
+
+-- Q2: How many rectangles are there?
+-- A: The count of rows in the rectangles table, indicating the number of rectangles
+SELECT COUNT(*) FROM rectangles;
+
+-- Q3: What color is the widest rectangle?
+-- A: The color of the rectangle with the largest width
+SELECT color FROM rectangles ORDER BY width DESC LIMIT 1;
+
+-- Q4: What color is the tallest rectangle?
+-- A: The color of the rectangle with the largest height
+SELECT color FROM rectangles ORDER BY height DESC LIMIT 1;
+
+-- Q5: List all rectangles that are wider than they are tall
+-- A: Lists rectangles where width is larger than height
+SELECT * FROM rectangles WHERE width > height;
+
+-- Q6: Calculate and select the area of each rectangle
+-- A: Selects width * height as the area for each rectangle, using the alias "Area"
+SELECT id, width, height, width * height AS Area FROM rectangles;
+
+-- Q7: What color is the largest rectangle?
+-- A: The color of the rectangle with the largest area
+SELECT color FROM rectangles ORDER BY width * height DESC LIMIT 1;
+
+-- Q8: What color is the rectangle that extends the most to the right?
+-- A: The color of the rectangle with the largest x + width value
+SELECT color FROM rectangles ORDER BY x + width DESC LIMIT 1;
+
+-- Q9: Find rectangle(s) with NULL color
+-- A: Lists rectangles where the color is NULL
+SELECT * FROM rectangles WHERE color IS NULL;
+
+-- Q10: List all the different colors
+-- A: Lists distinct colors of rectangles, without duplicates
+SELECT DISTINCT color FROM rectangles;
+
+-- Q11: List all the different named colors
+-- A: Lists distinct named colors (excluding NULL values) like 'red', 'blue', etc.
+-- Assumption: Named colors do not include RGB values like #abcdef
+SELECT DISTINCT color FROM rectangles WHERE color NOT LIKE '#%' AND color IS NOT NULL;
+
+-- Q12: List rectangle colors in upper case letters
+-- A: Converts color to uppercase and lists distinct colors
+SELECT DISTINCT UPPER(color) FROM rectangles WHERE color IS NOT NULL;
+
+-- Q13: What is the course_id of the course with the longest name?
+-- A: Finds the course with the longest name and selects its course_id
+SELECT course_id FROM courses ORDER BY LENGTH(course_name) DESC LIMIT 1;
+
+-- Q14: How many assignments are there with due dates in 2024?
+-- A: Counts assignments with due dates in the year 2024
+SELECT COUNT(*) FROM assignments WHERE strftime('%Y', due_date) = '2024';
+
+-- Q15: Concatenate Course ID and name
+-- A: Concatenates course_id and course_name with a colon and space
+SELECT course_id || ': ' || course_name FROM courses;
+
+-- Q16: List courses with Labs on Mondays
+-- A: Lists courses that have lab sessions on Monday, including course_id, course_name, and lab_time
+SELECT course_id, course_name, lab_time FROM courses WHERE lab_time LIKE 'Monday%';
+
+-- Q17: List all assignments with a due date before the current date
+-- A: Lists assignments with due dates before today
+SELECT * FROM assignments WHERE due_date < DATE('now');
+
+-- Q18: How many assignments are there for each course?
+-- A: Counts the number of assignments per course, grouped by course_id
+SELECT course_id, COUNT(*) FROM assignments GROUP BY course_id;
